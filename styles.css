@@ -1,4 +1,4 @@
-/* styles.css - refined SVG stroke / fill approach: use separate stroke-only text behind a fill text to get crisp translucent outlines without rasterized gray artifacts */
+/* styles.css - refined: add matching translucent outlines to non-SVG text (pronouns, bio, top-note, timezone) so they match the SVG headings */
 :root{
   --card-width: min(920px, 92vw);
   --card-padding: 48px;
@@ -20,7 +20,7 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 .top-header{position:fixed;top:18px;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;pointer-events:none}
 .name{margin:0;pointer-events:auto}
 .name svg{height:92px;width:min(92vw,720px);display:block}
-.top-note{font-family:'Comic Neue',Rubik,system-ui;font-size:14px;color:#fff;opacity:0.95;margin-top:6px;pointer-events:auto;text-shadow:0 0 3px rgba(0,0,0,0.45)}
+.top-note{font-family:'Comic Neue',Rubik,system-ui;font-size:14px;color:#fff;opacity:0.95;margin-top:6px;pointer-events:auto;text-shadow:0 0 4px rgba(0,0,0,0.6),1px 1px 0 rgba(0,0,0,0.35),-1px -1px 0 rgba(0,0,0,0.35)}
 
 /* Card: plain semi-transparent rounded rectangle with no shine/shadow/border detailing */
 .card{position:relative;z-index:2;margin-top:160px;width:var(--card-width);padding:var(--card-padding-top) var(--card-padding);background:var(--glass-bg);border-radius:14px;/* removed box-shadow and gradient */text-align:center;margin-bottom:120px;min-height:280px}
@@ -67,10 +67,24 @@ svg text{font-family:'Comic Neue', 'Press Start 2P', sans-serif;pointer-events:n
 /* make sure SVG text renders crisply */
 svg { shape-rendering: geometricPrecision; text-rendering: optimizeLegibility; }
 
-.pronouns{opacity:0.72;margin-top:6px;font-size:18px;text-shadow:0 0 2px rgba(0,0,0,0.35)}
-.bio{font-size:20px;margin:18px 0 12px;line-height:1.4;text-shadow:0 0 3px rgba(0,0,0,0.35)}
+/* Add matching translucent outlines for other textual elements using subtle multi-layer shadows
+   This keeps them visually consistent with the SVG-stroked headings without the gray artifact. */
+.top-note,
+.pronouns,
+.bio,
+.timezone,
+.label{
+  /* soft halo + two light edge shadows to simulate a translucent outline */
+  text-shadow:
+    0 0 4px rgba(0,0,0,0.60),   /* soft halo */
+    1px 1px 0 rgba(0,0,0,0.35),  /* lower-right edge */
+    -1px -1px 0 rgba(0,0,0,0.35); /* upper-left edge */
+}
+
+.pronouns{opacity:0.72;margin-top:6px;font-size:18px}
+.bio{font-size:20px;margin:18px 0 12px;line-height:1.4}
 /* timezone positioned near bottom of the card, slightly transparent */
-.timezone{opacity:0.72;margin-bottom:6px;position:absolute;left:50%;transform:translateX(-50%);bottom:20px;text-shadow:0 0 2px rgba(0,0,0,0.35)}
+.timezone{opacity:0.72;margin-bottom:6px;position:absolute;left:50%;transform:translateX(-50%);bottom:20px}
 
 /* Socials footer positioned near the bottom */
 .socials-footer{position:fixed;bottom:18px;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;pointer-events:none}
