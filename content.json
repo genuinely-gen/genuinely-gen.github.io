@@ -1,0 +1,33 @@
+{
+  "displayName": "- gen -",
+  "pronouns": "(she/her)",
+  "bio": "text text here text",
+  "timezone": "Europe, GMT+2",
+  "socials": [
+    {
+      "name": "GameBanana",
+      "url": "https://gamebanana.com/members/5749715",
+      "icon": "images/gamebanana.png"
+    },
+    {
+      "name": "YouTube",
+      "url": "https://www.youtube.com/@gen0930/featured",
+      "icon": "images/youtube.png"
+    },
+    {
+      "name": "Discord",
+      "url": "https://discord.com/users/1522695442234736821",
+      "icon": "images/discord.png"
+    },
+    {
+      "name": "Banana",
+      "url": "#",
+      "icon": "images/banana.png"
+    },
+    {
+      "name": "X",
+      "url": "https://x.com/genuienly_gen",
+      "icon": "images/x.png"
+    }
+  ]
+}

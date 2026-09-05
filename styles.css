@@ -1,0 +1,31 @@
+/* styles.css - simple responsive single-page matching provided design */
+:root{
+  --card-width: min(920px, 92vw);
+  --card-padding: 48px;
+  --glass-bg: rgba(0,0,0,0.45);
+  --glass-border: rgba(255,255,255,0.08);
+  --accent: #ffffff;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Rubik,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+body{color:var(--accent);background:#000;display:flex;align-items:center;justify-content:center}
+.bg{position:fixed;inset:0;background-image:url('images/background.jpg');background-size:cover;background-position:center;filter:blur(6px) saturate(110%);transform:scale(1.04);z-index:0}
+.card{position:relative;z-index:2;width:var(--card-width);padding:var(--card-padding);background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.45));border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.6);backdrop-filter:blur(4px);border:1px solid var(--glass-border);text-align:center}
+.header{margin-top:8px}
+.top-note{font-family:'Press Start 2P',monospace;font-size:14px;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,0.6);transform:translateY(-8px) rotate(-8deg);display:inline-block}
+.name{font-family:'Press Start 2P',monospace;font-size:64px;margin:6px 0 14px;letter-spacing:4px;text-shadow:2px 2px 0 rgba(0,0,0,0.6)}
+.section-title{font-family:'Press Start 2P',monospace;font-size:26px;margin:0;text-decoration:underline;text-decoration-thickness:3px}
+.pronouns{opacity:0.8;margin-top:10px;font-size:18px}
+.bio{font-size:20px;margin:18px 0 12px;line-height:1.4}
+.timezone{opacity:0.9;margin-bottom:14px}
+.socials{margin-top:18px}
+.icons{display:flex;gap:22px;justify-content:center;align-items:center;margin:14px 0}
+.icon{width:68px;height:68px;display:inline-flex;align-items:center;justify-content:center;border-radius:14px;background:rgba(255,255,255,0.06);box-shadow:0 6px 16px rgba(0,0,0,0.45);overflow:hidden}
+.icon img{width:56px;height:56px;object-fit:contain}
+.label{font-family:'Press Start 2P',monospace;margin-top:6px;font-size:20px}
+@media (max-width:600px){
+  .name{font-size:40px}
+  .icon{width:54px;height:54px}
+  .icon img{width:44px;height:44px}
+  .card{padding:28px;border-radius:12px}
+}
