@@ -1,4 +1,4 @@
-/* styles.css - updated to use inline SVG strokes for headings/labels and improved outlines */
+/* styles.css - refined SVG stroke / fill approach: use separate stroke-only text behind a fill text to get crisp translucent outlines without rasterized gray artifacts */
 :root{
   --card-width: min(920px, 92vw);
   --card-padding: 48px;
@@ -25,24 +25,47 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 /* Card: plain semi-transparent rounded rectangle with no shine/shadow/border detailing */
 .card{position:relative;z-index:2;margin-top:160px;width:var(--card-width);padding:var(--card-padding-top) var(--card-padding);background:var(--glass-bg);border-radius:14px;/* removed box-shadow and gradient */text-align:center;margin-bottom:120px;min-height:280px}
 
-/* SVG text styles: fill + translucent stroke (stroke under fill via paint-order) */
-.svg-name, .svg-section, .svg-label{
-  font-family: 'Comic Neue', 'Press Start 2P', sans-serif;
-  fill: #ffffff;
-  stroke: rgba(0,0,0,0.65);
-  stroke-width: 10; /* thickness of the outline */
-  paint-order: stroke fill; /* draw stroke underneath the fill */
+/* SVG stroke-only vs fill-only classes
+   We'll render stroke text underneath fill text for a crisp, translucent outline. */
+svg text{font-family:'Comic Neue', 'Press Start 2P', sans-serif;pointer-events:none;}
+
+/* NAME */
+.svg-name-stroke{
+  fill: none;
+  stroke: rgba(0,0,0,0.72);
+  stroke-width: 14;
   stroke-linejoin: round;
+  stroke-linecap: round;
+  paint-order: stroke fill;
+}
+.svg-name-fill{
+  fill: #ffffff;
 }
 
-/* different sizes for each svg text
-   stroke-width is proportional to size; adjust if you want thicker/thinner outlines */
-.svg-name{font-size:64px;}
-.svg-section{font-size:32px;stroke-width:7}
-.svg-label{font-size:28px;stroke-width:6}
+/* SECTION */
+.svg-section-stroke{
+  fill: none;
+  stroke: rgba(0,0,0,0.72);
+  stroke-width: 9;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  paint-order: stroke fill;
+}
+.svg-section-fill{ fill: #ffffff; }
 
-/* ensure SVG text scales responsively */
-.name svg text, .section-title svg text, .socials-footer svg text{dominant-baseline:middle}
+/* LABEL */
+.svg-label-stroke{
+  fill: none;
+  stroke: rgba(0,0,0,0.72);
+  stroke-width: 7;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  paint-order: stroke fill;
+}
+.svg-label-fill{ fill: #ffffff; }
+
+/* make sure SVG text renders crisply */
+svg { shape-rendering: geometricPrecision; text-rendering: optimizeLegibility; }
 
 .pronouns{opacity:0.72;margin-top:6px;font-size:18px;text-shadow:0 0 2px rgba(0,0,0,0.35)}
 .bio{font-size:20px;margin:18px 0 12px;line-height:1.4;text-shadow:0 0 3px rgba(0,0,0,0.35)}
@@ -58,9 +81,9 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 
 @media (max-width:600px){
   .name svg{height:64px}
-  .svg-name{font-size:44px;stroke-width:6}
-  .svg-section{font-size:22px;stroke-width:5}
-  .svg-label{font-size:20px;stroke-width:4}
+  .svg-name-stroke{stroke-width:10}
+  .svg-section-stroke{stroke-width:6}
+  .svg-label-stroke{stroke-width:5}
   .icon{width:54px;height:54px}
   .icon img{width:44px;height:44px}
   .card{padding:28px;border-radius:12px;margin-top:110px;margin-bottom:100px;min-height:230px}
