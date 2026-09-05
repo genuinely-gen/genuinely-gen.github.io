@@ -1,15 +1,22 @@
-/* styles.css - updated to use user's Imgur background and use cover (Roblox ImageLabel "Crop"-like behaviour) */
+/* styles.css - updated visuals per user request:
+   - simple rounded rectangle card (no shine/shadow/outlines)
+   - slight transparent black outline around text
+   - ABOUT ME moved slightly below the top of the card
+   - (she/her) and timezone made slightly transparent; timezone positioned near bottom of the card
+   - background cover behavior and socials footer unchanged
+*/
 :root{
   --card-width: min(920px, 92vw);
   --card-padding: 48px;
-  --glass-bg: rgba(0,0,0,0.45);
-  --glass-border: rgba(255,255,255,0.08);
+  --card-padding-top: 36px; /* smaller top padding so ABOUT ME is closer to top */
+  --glass-bg: rgba(0,0,0,0.55);
+  --glass-border: rgba(0,0,0,0.12);
   --accent: #ffffff;
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:Rubik,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
 body{color:var(--accent);background:#000;display:flex;align-items:flex-start;justify-content:center}
-/* Use the user's provided Imgur link as the background. background-size:cover mimics Roblox ImageLabel Crop/Scaled behaviour by filling the element and cropping overflow while preserving aspect ratio. */
+/* Background uses user's Imgur image and cover scaling */
 .bg{position:fixed;inset:0;background-image:url('https://i.imgur.com/49T27tV.png');background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(6px) saturate(110%);transform:scale(1.04);z-index:0}
 
 /* Top fixed name area */
@@ -17,12 +24,21 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 .name{font-family:'Press Start 2P',monospace;font-size:72px;margin:0;color:var(--accent);text-shadow:2px 2px 0 rgba(0,0,0,0.6);pointer-events:auto}
 .top-note{font-family:Rubik,system-ui;font-size:14px;color:#fff;opacity:0.95;margin-top:6px;pointer-events:auto}
 
-.card{position:relative;z-index:2;margin-top:160px;width:var(--card-width);padding:var(--card-padding);background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.45));border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.6);backdrop-filter:blur(4px);border:1px solid var(--glass-border);text-align:center;margin-bottom:120px}
+/* Card: plain semi-transparent rounded rectangle with no shine/shadow/border detailing */
+.card{position:relative;z-index:2;margin-top:160px;width:var(--card-width);padding:var(--card-padding-top) var(--card-padding);background:var(--glass-bg);border-radius:14px;/* removed box-shadow and gradient */text-align:center;margin-bottom:120px;min-height:280px}
 
-.section-title{font-family:'Press Start 2P',monospace;font-size:26px;margin:0;text-decoration:underline;text-decoration-thickness:3px}
-.pronouns{opacity:0.8;margin-top:10px;font-size:18px}
+/* Text outline / subtle stroke for readability */
+/* Use both -webkit-text-stroke where supported and a multi-direction text-shadow fallback */
+.name, .top-note, .section-title, .pronouns, .bio, .label, .timezone{
+  -webkit-text-stroke: 1.2px rgba(0,0,0,0.55);
+  text-shadow: -1px -1px 0 rgba(0,0,0,0.55), 1px -1px 0 rgba(0,0,0,0.55), -1px 1px 0 rgba(0,0,0,0.55), 1px 1px 0 rgba(0,0,0,0.55);
+}
+
+.section-title{font-family:'Press Start 2P',monospace;font-size:26px;margin:6px 0 8px;text-decoration:none;text-decoration-thickness:3px}
+.pronouns{opacity:0.72;margin-top:6px;font-size:18px}
 .bio{font-size:20px;margin:18px 0 12px;line-height:1.4}
-.timezone{opacity:0.9;margin-bottom:14px}
+/* timezone positioned near bottom of the card, slightly transparent */
+.timezone{opacity:0.72;margin-bottom:6px;position:absolute;left:50%;transform:translateX(-50%);bottom:20px}
 
 /* Socials footer positioned near the bottom */
 .socials-footer{position:fixed;bottom:18px;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;pointer-events:none}
@@ -35,6 +51,6 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   .name{font-size:40px}
   .icon{width:54px;height:54px}
   .icon img{width:44px;height:44px}
-  .card{padding:28px;border-radius:12px;margin-top:110px;margin-bottom:100px}
+  .card{padding:28px;border-radius:12px;margin-top:110px;margin-bottom:100px;min-height:230px}
   .socials-footer{bottom:14px}
 }
