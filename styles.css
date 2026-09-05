@@ -1,10 +1,4 @@
-/* styles.css - updated visuals per user request:
-   - simple rounded rectangle card (no shine/shadow/outlines)
-   - slight transparent black outline around text
-   - ABOUT ME moved slightly below the top of the card
-   - (she/her) and timezone made slightly transparent; timezone positioned near bottom of the card
-   - background cover behavior and socials footer unchanged
-*/
+/* styles.css - updated visuals: translucent text outline (shadow-based), comic-style font (Comic Neue), removed solid stroke fallback */
 :root{
   --card-width: min(920px, 92vw);
   --card-padding: 48px;
@@ -21,20 +15,24 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 
 /* Top fixed name area */
 .top-header{position:fixed;top:18px;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;pointer-events:none}
-.name{font-family:'Press Start 2P',monospace;font-size:72px;margin:0;color:var(--accent);text-shadow:2px 2px 0 rgba(0,0,0,0.6);pointer-events:auto}
-.top-note{font-family:Rubik,system-ui;font-size:14px;color:#fff;opacity:0.95;margin-top:6px;pointer-events:auto}
+.name{font-family:'Comic Neue', 'Press Start 2P', monospace;font-size:72px;margin:0;color:var(--accent);pointer-events:auto}
+.top-note{font-family:'Comic Neue',Rubik,system-ui;font-size:14px;color:#fff;opacity:0.95;margin-top:6px;pointer-events:auto}
 
 /* Card: plain semi-transparent rounded rectangle with no shine/shadow/border detailing */
 .card{position:relative;z-index:2;margin-top:160px;width:var(--card-width);padding:var(--card-padding-top) var(--card-padding);background:var(--glass-bg);border-radius:14px;/* removed box-shadow and gradient */text-align:center;margin-bottom:120px;min-height:280px}
 
-/* Text outline / subtle stroke for readability */
-/* Use both -webkit-text-stroke where supported and a multi-direction text-shadow fallback */
+/* Translucent outline via subtle multiple text-shadows (avoids solid gray stroke) and comic-style font */
 .name, .top-note, .section-title, .pronouns, .bio, .label, .timezone{
-  -webkit-text-stroke: 1.2px rgba(0,0,0,0.55);
-  text-shadow: -1px -1px 0 rgba(0,0,0,0.55), 1px -1px 0 rgba(0,0,0,0.55), -1px 1px 0 rgba(0,0,0,0.55), 1px 1px 0 rgba(0,0,0,0.55);
+  font-family: 'Comic Neue', Rubik, system-ui;
+  text-shadow:
+    0 0 3px rgba(0,0,0,0.50), /* soft halo for contrast */
+    1px 1px 0 rgba(0,0,0,0.22),
+    -1px -1px 0 rgba(0,0,0,0.22),
+    1px -1px 0 rgba(0,0,0,0.18),
+    -1px 1px 0 rgba(0,0,0,0.18);
 }
 
-.section-title{font-family:'Press Start 2P',monospace;font-size:26px;margin:6px 0 8px;text-decoration:none;text-decoration-thickness:3px}
+.section-title{font-family:'Comic Neue','Press Start 2P',monospace;font-size:26px;margin:6px 0 8px;text-decoration:none;text-decoration-thickness:3px}
 .pronouns{opacity:0.72;margin-top:6px;font-size:18px}
 .bio{font-size:20px;margin:18px 0 12px;line-height:1.4}
 /* timezone positioned near bottom of the card, slightly transparent */
@@ -45,7 +43,7 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 .socials-footer .icons{display:flex;gap:22px;justify-content:center;align-items:center;margin:8px 0}
 .icon{width:68px;height:68px;display:inline-flex;align-items:center;justify-content:center;border-radius:14px;background:rgba(255,255,255,0.06);box-shadow:0 6px 16px rgba(0,0,0,0.45);overflow:hidden;pointer-events:auto}
 .icon img{width:56px;height:56px;object-fit:contain}
-.label{font-family:'Press Start 2P',monospace;margin-top:6px;font-size:20px;pointer-events:auto}
+.label{font-family:'Comic Neue','Press Start 2P',monospace;margin-top:6px;font-size:20px;pointer-events:auto}
 
 @media (max-width:600px){
   .name{font-size:40px}
