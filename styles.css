@@ -1,4 +1,4 @@
-/* styles.css - refined: add matching translucent outlines to non-SVG text (pronouns, bio, top-note, timezone) so they match the SVG headings */
+/* styles.css - updated visuals: translucent text outline (shadow-based), comic-style font (Comic Neue), removed solid stroke fallback */
 :root{
   --card-width: min(920px, 92vw);
   --card-padding: 48px;
@@ -13,74 +13,26 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 /* Background uses user's Imgur image and cover scaling */
 .bg{position:fixed;inset:0;background-image:url('https://i.imgur.com/49T27tV.png');background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(6px) saturate(110%);transform:scale(1.04);z-index:0}
 
-/* Utility: visually-hidden for screen readers */
-.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
 /* Top fixed name area */
 .top-header{position:fixed;top:18px;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;pointer-events:none}
-.name{margin:0;pointer-events:auto}
-.name svg{height:92px;width:min(92vw,720px);display:block}
-.top-note{font-family:'Comic Neue',Rubik,system-ui;font-size:14px;color:#fff;opacity:0.95;margin-top:6px;pointer-events:auto;text-shadow:0 0 4px rgba(0,0,0,0.6),1px 1px 0 rgba(0,0,0,0.35),-1px -1px 0 rgba(0,0,0,0.35)}
+.name{font-family:'Comic Neue', 'Press Start 2P', monospace;font-size:72px;margin:0;color:var(--accent);pointer-events:auto}
+.top-note{font-family:'Comic Neue',Rubik,system-ui;font-size:14px;color:#fff;opacity:0.95;margin-top:6px;pointer-events:auto}
 
 /* Card: plain semi-transparent rounded rectangle with no shine/shadow/border detailing */
 .card{position:relative;z-index:2;margin-top:160px;width:var(--card-width);padding:var(--card-padding-top) var(--card-padding);background:var(--glass-bg);border-radius:14px;/* removed box-shadow and gradient */text-align:center;margin-bottom:120px;min-height:280px}
 
-/* SVG stroke-only vs fill-only classes
-   We'll render stroke text underneath fill text for a crisp, translucent outline. */
-svg text{font-family:'Comic Neue', 'Press Start 2P', sans-serif;pointer-events:none;}
-
-/* NAME */
-.svg-name-stroke{
-  fill: none;
-  stroke: rgba(0,0,0,0.72);
-  stroke-width: 14;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  paint-order: stroke fill;
-}
-.svg-name-fill{
-  fill: #ffffff;
-}
-
-/* SECTION */
-.svg-section-stroke{
-  fill: none;
-  stroke: rgba(0,0,0,0.72);
-  stroke-width: 9;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  paint-order: stroke fill;
-}
-.svg-section-fill{ fill: #ffffff; }
-
-/* LABEL */
-.svg-label-stroke{
-  fill: none;
-  stroke: rgba(0,0,0,0.72);
-  stroke-width: 7;
-  stroke-linejoin: round;
-  stroke-linecap: round;
-  paint-order: stroke fill;
-}
-.svg-label-fill{ fill: #ffffff; }
-
-/* make sure SVG text renders crisply */
-svg { shape-rendering: geometricPrecision; text-rendering: optimizeLegibility; }
-
-/* Add matching translucent outlines for other textual elements using subtle multi-layer shadows
-   This keeps them visually consistent with the SVG-stroked headings without the gray artifact. */
-.top-note,
-.pronouns,
-.bio,
-.timezone,
-.label{
-  /* soft halo + two light edge shadows to simulate a translucent outline */
+/* Translucent outline via subtle multiple text-shadows (avoids solid gray stroke) and comic-style font */
+.name, .top-note, .section-title, .pronouns, .bio, .label, .timezone{
+  font-family: 'Comic Neue', Rubik, system-ui;
   text-shadow:
-    0 0 4px rgba(0,0,0,0.60),   /* soft halo */
-    1px 1px 0 rgba(0,0,0,0.35),  /* lower-right edge */
-    -1px -1px 0 rgba(0,0,0,0.35); /* upper-left edge */
+    0 0 3px rgba(0,0,0,0.50), /* soft halo for contrast */
+    1px 1px 0 rgba(0,0,0,0.22),
+    -1px -1px 0 rgba(0,0,0,0.22),
+    1px -1px 0 rgba(0,0,0,0.18),
+    -1px 1px 0 rgba(0,0,0,0.18);
 }
 
+.section-title{font-family:'Comic Neue','Press Start 2P',monospace;font-size:26px;margin:6px 0 8px;text-decoration:none;text-decoration-thickness:3px}
 .pronouns{opacity:0.72;margin-top:6px;font-size:18px}
 .bio{font-size:20px;margin:18px 0 12px;line-height:1.4}
 /* timezone positioned near bottom of the card, slightly transparent */
@@ -94,10 +46,7 @@ svg { shape-rendering: geometricPrecision; text-rendering: optimizeLegibility; }
 .label{font-family:'Comic Neue','Press Start 2P',monospace;margin-top:6px;font-size:20px;pointer-events:auto}
 
 @media (max-width:600px){
-  .name svg{height:64px}
-  .svg-name-stroke{stroke-width:10}
-  .svg-section-stroke{stroke-width:6}
-  .svg-label-stroke{stroke-width:5}
+  .name{font-size:40px}
   .icon{width:54px;height:54px}
   .icon img{width:44px;height:44px}
   .card{padding:28px;border-radius:12px;margin-top:110px;margin-bottom:100px;min-height:230px}
