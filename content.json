@@ -7,27 +7,27 @@
     {
       "name": "GameBanana",
       "url": "https://gamebanana.com/members/5749715",
-      "icon": "images/gamebanana.png"
+      "icon": "/images/gamebanana.png?v=2"
     },
     {
       "name": "YouTube",
       "url": "https://www.youtube.com/@gen0930/featured",
-      "icon": "images/youtube.png"
+      "icon": "/images/youtube.png?v=2"
     },
     {
       "name": "Discord",
       "url": "https://discord.com/users/1522695442234736821",
-      "icon": "images/discord.png"
+      "icon": "/images/discord.png?v=2"
     },
     {
       "name": "Banana",
       "url": "#",
-      "icon": "images/banana.png"
+      "icon": "/images/banana.png?v=2"
     },
     {
       "name": "X",
       "url": "https://x.com/genuienly_gen",
-      "icon": "images/x.png"
+      "icon": "/images/x.png?v=2"
     }
   ]
 }

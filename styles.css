@@ -1,4 +1,4 @@
-/* styles.css - updated to place name at top and non-rotated "that's me" underneath */
+/* styles.css - updated to use absolute image path to avoid relative path issues on Pages */
 :root{
   --card-width: min(920px, 92vw);
   --card-padding: 48px;
@@ -9,7 +9,8 @@
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:Rubik,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
 body{color:var(--accent);background:#000;display:flex;align-items:flex-start;justify-content:center}
-.bg{position:fixed;inset:0;background-image:url('images/background.jpg');background-size:cover;background-position:center;filter:blur(6px) saturate(110%);transform:scale(1.04);z-index:0}
+/* Use leading slash so the path is absolute from the site root. Add a cache-bust query so browsers request the newest file. */
+.bg{position:fixed;inset:0;background-image:url('/images/background.jpg?v=2');background-size:cover;background-position:center;filter:blur(6px) saturate(110%);transform:scale(1.04);z-index:0}
 
 /* Top fixed name area */
 .top-header{position:fixed;top:18px;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;pointer-events:none}
