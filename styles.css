@@ -1,4 +1,4 @@
-/* styles.css - updated to place socials in a fixed footer near the bottom */
+/* styles.css - updated to use user's Imgur background and use cover (Roblox ImageLabel "Crop"-like behaviour) */
 :root{
   --card-width: min(920px, 92vw);
   --card-padding: 48px;
@@ -9,8 +9,8 @@
 *{box-sizing:border-box}
 html,body{height:100%;margin:0;font-family:Rubik,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
 body{color:var(--accent);background:#000;display:flex;align-items:flex-start;justify-content:center}
-/* Use leading slash so the path is absolute from the site root. Add a cache-bust query so browsers request the newest file. */
-.bg{position:fixed;inset:0;background-image:url('/images/background.jpg?v=2');background-size:cover;background-position:center;filter:blur(6px) saturate(110%);transform:scale(1.04);z-index:0}
+/* Use the user's provided Imgur link as the background. background-size:cover mimics Roblox ImageLabel Crop/Scaled behaviour by filling the element and cropping overflow while preserving aspect ratio. */
+.bg{position:fixed;inset:0;background-image:url('https://i.imgur.com/49T27tV.png');background-size:cover;background-position:center;background-repeat:no-repeat;filter:blur(6px) saturate(110%);transform:scale(1.04);z-index:0}
 
 /* Top fixed name area */
 .top-header{position:fixed;top:18px;left:0;right:0;z-index:4;display:flex;flex-direction:column;align-items:center;pointer-events:none}
