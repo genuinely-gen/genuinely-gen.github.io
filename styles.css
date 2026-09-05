@@ -1,4 +1,4 @@
-/* styles.css - updated visuals: translucent text outline (shadow-based), comic-style font (Comic Neue), removed solid stroke fallback */
+/* styles.css - updated visuals: thicker translucent text outline via stronger shadow values */
 :root{
   --card-width: min(920px, 92vw);
   --card-padding: 48px;
@@ -21,15 +21,15 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 /* Card: plain semi-transparent rounded rectangle with no shine/shadow/border detailing */
 .card{position:relative;z-index:2;margin-top:160px;width:var(--card-width);padding:var(--card-padding-top) var(--card-padding);background:var(--glass-bg);border-radius:14px;/* removed box-shadow and gradient */text-align:center;margin-bottom:120px;min-height:280px}
 
-/* Translucent outline via subtle multiple text-shadows (avoids solid gray stroke) and comic-style font */
+/* Thicker translucent outline via stronger multiple text-shadows */
 .name, .top-note, .section-title, .pronouns, .bio, .label, .timezone{
   font-family: 'Comic Neue', Rubik, system-ui;
   text-shadow:
-    0 0 3px rgba(0,0,0,0.50), /* soft halo for contrast */
-    1px 1px 0 rgba(0,0,0,0.22),
-    -1px -1px 0 rgba(0,0,0,0.22),
-    1px -1px 0 rgba(0,0,0,0.18),
-    -1px 1px 0 rgba(0,0,0,0.18);
+    0 0 6px rgba(0,0,0,0.75),  /* stronger soft halo for thicker outline */
+    2px 2px 0 rgba(0,0,0,0.40),
+    -2px -2px 0 rgba(0,0,0,0.40),
+    2px -2px 0 rgba(0,0,0,0.34),
+    -2px 2px 0 rgba(0,0,0,0.34);
 }
 
 .section-title{font-family:'Comic Neue','Press Start 2P',monospace;font-size:26px;margin:6px 0 8px;text-decoration:none;text-decoration-thickness:3px}
