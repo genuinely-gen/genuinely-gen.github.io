@@ -47,8 +47,8 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   position:absolute;
   left:50%;
   transform:translateX(-50%);
-  /* bottom controls vertical placement relative to the text box; larger negative moves it further down */
-  bottom:-4px;            /* moved the underline 10px down from previous 6px -> -4px */
+  /* bottom controls vertical placement relative to the text box; smaller value brings the line closer (moved up) */
+  bottom:1px;            /* moved down by 5px from 6px -> 1px */
   width:70%;
   height:2px;           /* thinner than previous 3px */
   background:rgba(255,255,255,0.95);
@@ -74,6 +74,6 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   .icon{width:54px;height:54px}
   .icon img{width:44px;height:44px}
   .card{padding:28px;border-radius:12px;margin-top:110px;margin-bottom:100px;min-height:230px}
-  .section-title::after{bottom:-4px;width:80%;height:2px} /* tweak underline slightly on small screens */
+  .section-title::after{bottom:1px;width:80%;height:2px} /* tweak underline slightly on small screens */
   .socials-footer{bottom:14px}
 }
