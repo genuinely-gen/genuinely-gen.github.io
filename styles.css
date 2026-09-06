@@ -33,7 +33,15 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 }
 
 /* Move ABOUT ME 10px more up by reducing its top margin further (was -14px -> now -24px) */
-.section-title{font-family:'Comic Neue','Press Start 2P',monospace;font-size:26px;margin:-24px 0 8px;text-decoration:none;text-decoration-thickness:3px}
+.section-title{
+  font-family:'Comic Neue','Press Start 2P',monospace;
+  font-size:26px;
+  margin:-24px 0 8px;
+  text-decoration: underline;
+  text-decoration-thickness: 3px;
+  text-decoration-color: rgba(255,255,255,0.95);
+  text-underline-offset: 8px;
+}
 .pronouns{opacity:0.72;margin-top:6px;font-size:18px}
 .bio{font-size:20px;margin:18px 0 12px;line-height:1.4}
 /* timezone positioned near bottom of the card, slightly transparent */
