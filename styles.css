@@ -39,7 +39,7 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   display:inline-block;
   font-family:'Comic Neue','Press Start 2P',monospace;
   font-size:26px;
-  margin:-24px 0 8px; /* keep vertical position */
+  margin:-24px 0 2px; /* moved bottom margin to 2px so pronouns sits just below */
   text-decoration:none; /* remove default underline */
 }
 .section-title::after{
@@ -48,7 +48,7 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   left:50%;
   transform:translateX(-50%);
   /* bottom controls vertical placement relative to the text box; smaller value brings the line closer (moved up) */
-  bottom:8px;            /* moved up slightly from the previous offset */
+  bottom:6px;            /* moved up slightly so pronouns can sit directly below the line */
   width:70%;
   height:2px;           /* thinner than previous 3px */
   background:rgba(255,255,255,0.95);
@@ -56,7 +56,8 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   pointer-events:none;
 }
 
-.pronouns{opacity:0.72;margin-top:6px;font-size:18px}
+/* place pronouns immediately underneath ABOUT ME */
+.pronouns{opacity:0.72;margin-top:2px;font-size:18px}
 .bio{font-size:20px;margin:18px 0 12px;line-height:1.4}
 /* timezone positioned near bottom of the card, slightly transparent */
 .timezone{opacity:0.72;margin-bottom:6px;position:absolute;left:50%;transform:translateX(-50%);bottom:10px}
