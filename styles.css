@@ -33,7 +33,8 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
 }
 
 /* ABOUT ME: replace text-decoration underline with a rounded, slightly-raised, thinner pseudo-element underline
-   - moved up previously by margin; here we use a ::after bar so we can fine-tune thickness and rounding */
+   - moved up previously by margin; here we use a ::after bar so we can fine-tune thickness and rounding
+   - update: make the underline exactly the same width as the text using width:100% and left:0/right:0 */
 .section-title{
   position:relative;
   display:inline-block;
@@ -41,16 +42,16 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   font-size:26px;
   margin:-24px 0 2px; /* moved bottom margin to 2px so pronouns sits just below */
   text-decoration:none; /* remove default underline */
+  padding-bottom:4px; /* ensure space for the pseudo-element */
 }
 .section-title::after{
   content:"";
   position:absolute;
-  left:50%;
-  transform:translateX(-50%);
-  /* bottom controls vertical placement relative to the text box; smaller value brings the line closer (moved up) */
-  bottom:1px;            /* moved down by 5px from 6px -> 1px */
-  width:70%;
-  height:2px;           /* thinner than previous 3px */
+  left:0;               /* align to the text box start */
+  right:0;              /* align to the text box end */
+  bottom:1px;           /* vertical placement relative to the text box */
+  width:100%;           /* match the text width exactly */
+  height:2px;           /* thickness */
   background:rgba(255,255,255,0.95);
   border-radius:999px;  /* fully rounded ends */
   pointer-events:none;
@@ -74,6 +75,6 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   .icon{width:54px;height:54px}
   .icon img{width:44px;height:44px}
   .card{padding:28px;border-radius:12px;margin-top:110px;margin-bottom:100px;min-height:230px}
-  .section-title::after{bottom:1px;width:80%;height:2px} /* tweak underline slightly on small screens */
+  .section-title::after{bottom:1px;width:100%;height:2px} /* ensure matching width on small screens */
   .socials-footer{bottom:14px}
 }
