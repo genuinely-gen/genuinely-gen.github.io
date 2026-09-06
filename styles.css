@@ -32,16 +32,30 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
     -1px 1px 0 rgba(0,0,0,0.18);
 }
 
-/* Move ABOUT ME 10px more up by reducing its top margin further (was -14px -> now -24px) */
+/* ABOUT ME: replace text-decoration underline with a rounded, slightly-raised, thinner pseudo-element underline
+   - moved up previously by margin; here we use a ::after bar so we can fine-tune thickness and rounding */
 .section-title{
+  position:relative;
+  display:inline-block;
   font-family:'Comic Neue','Press Start 2P',monospace;
   font-size:26px;
-  margin:-24px 0 8px;
-  text-decoration: underline;
-  text-decoration-thickness: 3px;
-  text-decoration-color: rgba(255,255,255,0.95);
-  text-underline-offset: 8px;
+  margin:-24px 0 8px; /* keep vertical position */
+  text-decoration:none; /* remove default underline */
 }
+.section-title::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  /* bottom controls vertical placement relative to the text box; smaller value brings the line closer (moved up) */
+  bottom:8px;            /* moved up slightly from the previous offset */
+  width:70%;
+  height:2px;           /* thinner than previous 3px */
+  background:rgba(255,255,255,0.95);
+  border-radius:999px;  /* fully rounded ends */
+  pointer-events:none;
+}
+
 .pronouns{opacity:0.72;margin-top:6px;font-size:18px}
 .bio{font-size:20px;margin:18px 0 12px;line-height:1.4}
 /* timezone positioned near bottom of the card, slightly transparent */
@@ -59,5 +73,6 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   .icon{width:54px;height:54px}
   .icon img{width:44px;height:44px}
   .card{padding:28px;border-radius:12px;margin-top:110px;margin-bottom:100px;min-height:230px}
+  .section-title::after{bottom:6px;width:80%;height:2px} /* tweak underline slightly on small screens */
   .socials-footer{bottom:14px}
 }
