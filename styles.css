@@ -40,7 +40,7 @@ body{color:var(--accent);background:#000;display:flex;align-items:flex-start;jus
   display:inline-block;
   font-family:'Comic Neue','Press Start 2P',monospace;
   font-size:26px;
-  margin:-39px 0 2px; /* moved 10px up from -29px */
+  margin:-49px 0 2px; /* moved 10px up from -39px */
   text-decoration:none; /* remove default underline */
   padding-bottom:4px; /* ensure space for the pseudo-element */
 }
